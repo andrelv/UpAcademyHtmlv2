@@ -1,29 +1,69 @@
 $(document).ready(function () {
-    $("#btn1").click(function () {
-        var nralunos = parseInt( $('#input1').val());
-        $("#p1").remove();
-        for (i = 0; i > nralunos; i++) {
-            $("#txt").text("Insira a nota do " +i +" aluno");
+    console.log("Ready!");
+});
+
+//vars
+var nrAlunos = 0;
+var clik = 0;
+var nota;
+var vecNota = [];
+var media=0;
+var x=0;
+var desv=0;
+
+$("#input1").keyup(function(event) {
+    if (event.keyCode === 13) {
+        main();
+    }
+});
+function main() {
+   //$("input").focus();
+   //$("input").val("");
+   clik++;
+   NRalunos();
+   tabalunos();
+   mat();
+}
+
+$("#btn1").click(main);
+
+function NRalunos() {
+    if(clik==1){
+    nrAlunos = parseInt($('#input1').val());
+    }
+
+    $("#txt").text("Insira a nota do " + clik + " aluno");
+}
 
 
-        }
-            // escreve para inserir a nota
-            // document.getElementById("txt").innerHTML = "Indique a nota do " + i + " aluno";
-        });
-        //$('h1').css('color','red');
-        //$('.conteudo').html('<img src= "https://as2.ftcdn.net/jpg/02/09/09/93/500_F_209099377_2lvQz7gDP7UqibT2xhthTko9nSemQXLI.jpg" alt=" Ola">')
-    });
+function tabalunos() {
+   
+  if (clik <= nrAlunos+1) {
+        if (clik > 1) {
+            nota = parseInt($('#input1').val());
+            $("#tabela").append(getRow(clik - 1, nota));     
+      }
+    }
+}
 
-   // function ler() {
-        //recebe o valor 
-      //  var x = document.getElementById("input1").value;
-       // for (i = 0; i = x; i++) {
+function getRow(numeroAluno, notaAluno) {
+media += notaAluno;
+    return `<tr>
+    <td>${numeroAluno}</td>
+    <td>${notaAluno}</td>
+</tr>`;
+}
+        
+function mat(){
+ if(clik>= nrAlunos+1){
+     $("#txt").text("Insira a nota de referencia ");
+     x= parseInt($('#input1').val());
+ }
 
-            //escreve para inserir a nota
-        //    document.getElementById("txt").innerHTML = "Indique a nota do " +i +" aluno";
-    //    }
-   // }
-
-   // function alunos(num) {
-
-  //  }
+ if (clik >= nrAlunos+2){
+    media = (media/nrAlunos);
+    desv = ((media-x)/media)*100;
+    $("#txt").text("A média da turma é de " + media + " valores e o  desvio e: " +desv);
+    console.log(media);
+ }
+}

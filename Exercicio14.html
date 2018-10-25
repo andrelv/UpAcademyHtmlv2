@@ -1,56 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Exercicio_14</title>
-    <style>
-        .button {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 8px 16px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        .button1 {
-            background-color: white;
-            color: black;
-            border: 2px solid #4CAF50;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <title>Exercicio14</title>
 </head>
 
 <body>
-    
-<div style="text-align: center"><p style="font-size: 3rem "> Ajudante de Professor</p><br>
-    <input type="text" id="input1">
-    <button id=btn1 class="button button1"> Submeter </button><br>
-    <p>Indique o numero de alunos</p>
-    <p id="txt"></p>
-    <!-- <label id="result">  </label> -->
-</div>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 text-center">
+                <div>
+                    <h1>Ajudante de Professor</h1>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="input1" autofocus>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <br>
+                    <p id="txt">Indique o numero de alunos</p>
+                    <button id=btn1 class="btn btn-success "> Submeter </button>
+                    <br>
+                    <br>
+                    <br>
+                    <div>
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Numero Aluno</th>
+                                    <th scope="col">Nota</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela">
 
 
 
+                            </tbody>
 
-    
+                        </table>
+
+
+                    </div>
+
+                    <!-- <p id="txt"></p> -->
+                    <!-- <label id="result">  </label> -->
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-sm-3"></div>
+
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="Ex14.js">
     </script>
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
