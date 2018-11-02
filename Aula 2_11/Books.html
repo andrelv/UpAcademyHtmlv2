@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Books</title>
+
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-image: url(fundo.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar fixed-top navbar-dark bg-dark text-align:center">
+            <a class="navbar-brand" href="#">
+                <button id="pedelivros">
+                    <img src="https://ooligan.pdx.edu/img/googlebooks.png" width="40" height="40" class="d-inline-block align-top rounded" alt="submit">
+                </button>
+                <--- Pedir Livros </a>
+                    <span class="navbar-text" style="font-size:1.5rem">
+                        Google Books
+                    </span>
+                    <form class="form-inline">
+                        <img src="http://www.francescomptonlibrary.com/uploads/5/2/1/5/52157523/7851018.jpg?257" width="100" height="40" class="d-inline-block align-top rounded">
+                        <!-- <input class="form-control mr-sm-2" id="ipt1" type: "text" placeholder="Nome" autofocus required>
+                    <button type="button" id="btn1" class="btn btn-outline-info my-2 my-sm-0"> Facturar </button>
+                    <button type="button" id="btn3" class="btn btn-outline-info my-2 my-sm-0"> Pedidos </button> -->
+                    </form>
+        </nav>
+    </div>
+    <div>
+        <br>
+        <br>
+    </div>
+
+    <div class="countainer" style="margin-top:80px">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 text-center">
+                <div class="card mx-auto" style="width: 25rem;">
+                    <img id="imglivro" class="card-img-top rounded" src="" width="100" height="100" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 id="titulolivro" class="card-title">Titulo Livro</h5>
+                        <p id="descricao" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <br>
+                        <button id="like" type="button" class="btn btn-success">Like</button>
+                        <button id="dismiss" type="button" class="btn btn-danger">Dismiss</button>
+                        <br>
+                        <br>
+                        <p id="autor"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="Books.js"></script>
+</body>
+
+</html>
