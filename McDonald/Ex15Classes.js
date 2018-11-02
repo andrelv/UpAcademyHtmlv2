@@ -7,8 +7,7 @@ class pedido {
 
 class factura {
     constructor(nome, pedidos) {
-        this.id = new Date().getTime();
-        this.nome = nome;
+        this.name = nome;
         this.pedidos = pedidos;
     }
 }

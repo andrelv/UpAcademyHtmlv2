@@ -5,11 +5,14 @@ $(document).ready(function () {
 
 //vars
 var enviar = false;
-var facturatemp = [];
-var factGlobal;
+var prodTemp = [];
+// factGlobal
+var factList= [];
+
 $("form").submit(function(e) {
     e.preventDefault();
 });
 //accoes dos butoes
 $("#btn2").click(inserir);
 $("#btn1").click(main);
+$("#btn3").click(registo);
