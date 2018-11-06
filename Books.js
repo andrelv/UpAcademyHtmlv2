@@ -1,6 +1,9 @@
 $(document).ready(function () {
     console.log("Ready for Google Books!");
     $("#card").hide();
+    //$("#cabecatabela").hide();
+    //$("#tabela").hide();
+    //$("#pyro").hide();
 
 });
 
@@ -21,22 +24,29 @@ class Livro {
 //vars
 var listaLivros = [];
 var listaLikes = [];
-var disLikes = [];
+var contLikes = 0;
 var cont = 0;
 var letra1 = "";
+//var element = 0;
 
 
 $("#pedelivros").click(getMeo);
 $("#like").click(like);
 $("#dismiss").click(dismiss);
+$("#likes").click(mostraLivros);
 
 
 
 function getMeo() {
+    $("#cabecatabela").hide();
+    if (cont>0){
+        $("#card").show();
+    }
+    
     var nr = $('#ipt1').val();
     letra();
     $.ajax({
-        url: "https://www.googleapis.com/books/v1/volumes?q=" +letra1 + "&maxResults=" + nr + "&startIndex=" + (listaLivros.length + 1),
+        url: "https://www.googleapis.com/books/v1/volumes?q=" + letra1 + "&maxResults=" + nr + "&startIndex=" + (listaLivros.length + 1),
         type: 'GET',
         success: function (data) {
             console.log(data);
@@ -46,11 +56,13 @@ function getMeo() {
                 if (element.volumeInfo.imageLinks == undefined) {
                     element.volumeInfo.imageLinks = "noimage.jpeg";
                 }
+                if (element.volumeInfo.description == undefined) {
+                    element.volumeInfo.description = "Livro sem descrição para apresentar";
+                }
                 let book = new Livro(element.id, element.volumeInfo.imageLinks.thumbnail, element.volumeInfo.title, element.volumeInfo.authors, 'categoria', element.volumeInfo.description, 0, 0);
                 console.log(book)
                 listaLivros.push(book);
             }
-
             mostrar();
         }
 
@@ -60,7 +72,7 @@ function getMeo() {
 }
 
 function letra() {
-    
+
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     for (var i = 0; i < 2; i++)
@@ -72,40 +84,66 @@ function letra() {
 
 function mostrar() {
     
-    $("#imglivro").attr("src", listaLivros[cont].img);
-    $("#titulolivro").html(listaLivros[cont].titulo);
-    $("#descricao").html("Descrição: " + listaLivros[cont].desc);
-    $("#autor").html("Escrito por: " + listaLivros[cont].autor);
-    if (listaLivros.length>0){
-        $("#card").show();}
-
+    if (listaLivros.length > 0) {
+        $("#card").show();
+    }
+    if (cont == listaLivros.length) {
+        $("#card").hide();
+        alert("A lista de livros terminou, solicite mais ou veja quais os Livros com Like");
+    }
+    else {
+        $("#imglivro").attr("src", listaLivros[cont].img);
+        $("#titulolivro").html(listaLivros[cont].titulo);
+        $("#descricao").text("Descrição: " + listaLivros[cont].desc);
+        $("#autor").html("Escrito por: " + listaLivros[cont].autor);
+    }
 }
 
 function like() {
+                                                                                                                                                              
     ebook = listaLivros[cont];
     ebook.like++;
-    listaLikes.push(ebook);
-    cont++;
-    
-    // $.ajax({
-    //     url: "https://www.googleapis.com/books/v1/volumes?q=search+terms",
-    //     type: 'POST',
-    //     contentType: 'application/json',
-    //     success: function (data) {
-    //         listaLivros[cont].like
-    //     }, 
-    //     error: function(err){
-    //         console.log(err)
-    //     }
-    // });   
+    contLikes++; //para mostrar o nr de likes dados
+    tabela();
+    $("#likes").html("Livros com Likes: " +contLikes);
     mostrar();
 }
 
 function dismiss() {
     ebook = listaLivros[cont];
     ebook.dislike++;
-    listadisLikes.push(ebook);
-
     cont++;
     mostrar();
 }
+
+function tabela(){
+    //var id = listaLivros[cont].id;
+    var titulo=listaLivros[cont].titulo;
+    var autor=listaLivros[cont].autor;
+    var lk = listaLivros[cont].like;
+    listaLikes.push(titulo, autor);
+    for (i=0; i > contLikes; i++){
+        if (listaLikes[contLikes] == listaLikes[i]){
+            lk++;
+        }
+    }
+    $("#tabela").append(getRow(titulo, autor, lk));
+    cont++;
+}
+
+function mostraLivros() {
+    console.log('entou');
+    $("#cabecatabela").css("display", "block");
+   // $("#cabecatabela").show();
+    //$("#tabela").show();
+
+}
+
+function getRow(titulo, autor, lk) {
+    
+        return `<tr>
+        <td>${titulo}</td>
+        <td>${autor}</td>
+        <td>${lk}</td>
+        </tr>`;
+    }
